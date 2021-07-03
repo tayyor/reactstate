@@ -1,0 +1,10 @@
+.main-container{
+  background: #ebebeb;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+  margin: auto;
+  padding: 20px;
+  width: 22rem;
+  height: 20rem; 
+  
+}
