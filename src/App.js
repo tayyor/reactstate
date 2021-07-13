@@ -1,6 +1,6 @@
 import React from "react";
 import profileimg from "./profileimg.gif";
-import Data from "./Data.js";
+import Data from "./Component/Data.js";
 import "./App.css";
 
 class App extends React.Component {
@@ -8,38 +8,46 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      imgSrc: " ",
-      fullName: " ",
-      bio: " ",
-      profession: " ",
-      show: true,
+      imgSrc: profileimg,
+      fullName : 'Hafeez Gbenle',
+      bio : 'Learning React js',
+      profession: 'System Administrator',
+      show: false
     };
   }
-  displayProfile = () => {
-    if (this.state.show) {
-      this.setState({
-        imgSrc: " ",
-        fullName: "Hafeez Gbenle ",
-        bio: "I am learning react Js",
-        profession: "System Administrator",
-      });
-    } else {
-      this.setState({});
-    }
-  };
+  displayProfile = () =>{
+    this.setState( (prevState) =>{
+      return{
+        ...prevState,show: !prevState.show,
+      }
+    })
+  }
 
+   buttonStyle = {
+    backgroundColor: "#ccffcc",
+    borderColor: "#ccffcc",
+    borderRadius: "5px",
+    padding: "0.5rem",
+  };
+  
   render() {
     return (
-      <div className= 'main-container'>
-        <Data
+      <div className="main-container">
+        {this.state.show && (
+          <Data
           imgSrc={this.state.imgSrc}
           fullName={this.state.fullName}
           bio={this.state.bio}
           profession={this.state.profession}
           displayProfile={this.displayProfile}
-        >
-          <img src={profileimg} alt='profile'/>
-        </Data>
+        />
+          
+        )}
+        <button 
+        onClick={this.displayProfile} style={this.buttonStyle}
+        className ='btn'>
+        show profile
+      </button>
       </div>
     );
   }
